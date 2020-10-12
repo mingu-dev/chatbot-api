@@ -16,13 +16,13 @@ public class ScenarioService {
 	private final ScenarioRepository scenarioRepository;
 	
 	@Transactional
-	public Long save(ScenarioRequest scenarioRequest) {
-		return scenarioRepository.save(convertDtoToEntity(scenarioRequest)).getId();
+	public void save(ScenarioRequest scenarioRequest) {
+		scenarioRepository.save(convertDtoToEntity(scenarioRequest));
 	}
 	
 	public ScenarioEntity convertDtoToEntity(ScenarioRequest scenarioRequest) {
 		return ScenarioEntity.builder()
-				.content(scenarioRequest.getContent())
+				.blocks(scenarioRequest.getBlocks())
 				.build();
 	}
 }

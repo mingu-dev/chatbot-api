@@ -1,5 +1,7 @@
 package com.chatbot.api.domain.scenario.dto;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ScenarioRequest {
 	
-	private String content;
+	private List<ScenarioBlock> blocks;
 	
 	@Builder
-	public ScenarioRequest(String content) {
-		this.content = content;
+	public ScenarioRequest(List<ScenarioBlock> blocks) {
+		this.blocks = blocks;
 	}
 }

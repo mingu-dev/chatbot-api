@@ -18,7 +18,7 @@ public class ScenarioController {
 	private final ScenarioService scenarioService;
 	
 	@PostMapping
-	public Long save(@RequestBody ScenarioRequest scenarioRequest) {
-		return scenarioService.save(scenarioRequest);
+	public void save(@RequestBody ScenarioRequest scenarioRequest) {
+		scenarioService.save(scenarioRequest);
 	}
 }

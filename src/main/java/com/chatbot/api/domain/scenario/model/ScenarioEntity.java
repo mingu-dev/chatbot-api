@@ -1,10 +1,16 @@
 package com.chatbot.api.domain.scenario.model;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.chatbot.api.domain.scenario.dto.ScenarioBlock;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -20,11 +26,13 @@ public class ScenarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String content;
+    @ElementCollection
+    @CollectionTable(name = "block")
+    private List<ScenarioBlock> blocks;
 	
 	@Builder
-	public ScenarioEntity(Long id, String content) {
+	public ScenarioEntity(Long id, List<ScenarioBlock> blocks) {
 		this.id = id;
-		this.content = content;
+		this.blocks = blocks;
 	}
 }
