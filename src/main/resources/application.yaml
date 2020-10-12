@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+  jpa:
+    generate-ddl: true
+    show_sql: true
