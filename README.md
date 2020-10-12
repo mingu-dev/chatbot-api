@@ -8,11 +8,10 @@
 - 프레임워크
   - Spring(boot)
 
-- 빌드 도구
-  - Maven
-  
-- 데이터베이스
-  - H2
+- 사용 기술
+  - 빌드 도구: Maven
+  - 데이터베이스: H2
+  - 기타: JPA (Spring Data JPA)
 
 # 요구 사항 분석
 - 구현할 API
