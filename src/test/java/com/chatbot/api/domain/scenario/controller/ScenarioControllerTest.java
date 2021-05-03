@@ -16,10 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.chatbot.api.domain.scenario.dto.Response;
-import com.chatbot.api.domain.scenario.dto.ScenarioBlock;
 import com.chatbot.api.domain.scenario.dto.ScenarioRequest;
 import com.chatbot.api.domain.scenario.dto.Utterance;
-import com.chatbot.api.domain.scenario.model.MessageType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -37,24 +35,17 @@ public class ScenarioControllerTest {
         String url = "http://localhost:" + port + "/api/v1/scenario";
 
 		Utterance utterance = Utterance.builder()
-				.utteranceType(MessageType.TEXT)
+				.utteranceType("text")
 				.utteranceContent("utterance content test")
 				.build();
 		Response response = Response.builder()
-				.responseType(MessageType.TEXT)
+				.responseType("text")
 				.responseContent("response content test")
 				.build();
-		ScenarioBlock block = ScenarioBlock.builder()
-				.num(1L)
-				.utterance(utterance)
-				.response(response)
-				.build();
-		
-		List<ScenarioBlock> blocks = new ArrayList<>();
-		blocks.add(block);
 		
         ScenarioRequest scenarioRequest = ScenarioRequest.builder()
-        		.blocks(blocks)
+        		.utterance(utterance)
+        		.response(response)
                 .build();
 
         // when
@@ -63,5 +54,4 @@ public class ScenarioControllerTest {
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
-
 }

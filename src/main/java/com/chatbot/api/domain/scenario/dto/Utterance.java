@@ -2,8 +2,6 @@ package com.chatbot.api.domain.scenario.dto;
 
 import javax.persistence.Embeddable;
 
-import com.chatbot.api.domain.scenario.model.MessageType;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class Utterance {
 	
-    private MessageType utteranceType;
+    private String utteranceType;
     private String utteranceContent;
     
     @Builder
-    public Utterance(MessageType utteranceType, String utteranceContent) {
+    public Utterance(String utteranceType, String utteranceContent) {
     	this.utteranceType = utteranceType;
     	this.utteranceContent = utteranceContent;
     }

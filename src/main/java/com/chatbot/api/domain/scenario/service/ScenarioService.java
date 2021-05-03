@@ -17,12 +17,14 @@ public class ScenarioService {
 	
 	@Transactional
 	public void save(ScenarioRequest scenarioRequest) {
-		scenarioRepository.save(convertDtoToEntity(scenarioRequest));
+		ScenarioEntity entity = convertDtoToEntity(scenarioRequest);
+		scenarioRepository.save(entity);
 	}
 	
 	public ScenarioEntity convertDtoToEntity(ScenarioRequest scenarioRequest) {
 		return ScenarioEntity.builder()
-				.blocks(scenarioRequest.getBlocks())
+				.utterance(scenarioRequest.getUtterance())
+				.response(scenarioRequest.getResponse())
 				.build();
 	}
 }
